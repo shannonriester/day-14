@@ -1,5 +1,4 @@
-var data = [
-  {
+var data = [{
     title: 'Outdoors',
     cover: 'https://dl.dropboxusercontent.com/u/19411356/day14/jump.jpeg',
     imgCollection: [{
@@ -58,64 +57,66 @@ var data = [
     imgCollection: [{
         src: 'https://dl.dropboxusercontent.com/u/19411356/day14/golden-puppy.jpeg',
         caption: 'Smile'
-    },
-    {
+    }, {
         src: 'https://dl.dropboxusercontent.com/u/19411356/day14/pug-blanket-outside.jpeg',
         caption: 'Brrr..!'
-    },
-    {
+    }, {
         src: 'https://dl.dropboxusercontent.com/u/19411356/day14/baby-fawn.jpeg',
         caption: 'Fawn!'
-    },
-    {
+    }, {
         src: 'https://dl.dropboxusercontent.com/u/19411356/day14/bear-cubs.jpeg',
         caption: 'BRRrr..cubs!'
-    }
-  ]
+    }]
 }];
 
 var divParent = $('#photosContainer');
 var photoBox = '<div class="photoBox"><p>Title</p><a href="#"><img src="#" /></a></div>';
-var $imgButton = $(photoBox);
+var $boxBtn = $(photoBox);
+var navAlbums = '<ul><li>Outdoors</li><li>Earth Rocks</li><li>Cities</li><li>Surf n Turf</li><li>ETs</li><li>Cuties</li>';
 
-data.forEach(function(album) {
-    var $albumBox = $(photoBox);
-    $albumBox.children('a').children('img').attr('src', album.cover);
-      console.log($albumBox.children('a').children('img'));
-    divParent.append($albumBox);
+
+$(window).addEventListener('hashchange', function(evt) {
+  console.log(evt);
+    var $homePage = data.forEach(function(album) {
+        var $albumBox = $(photoBox);
+        $albumBox.children('a').children('img').attr('src', album.cover);
+        console.log($albumBox.children('a').children('img'));
+        divParent.append($albumBox);
+    });
+
 });
 
-$imgButton.on('click', function(){
-  //write for loop on data.imgCollection so can iterate through imgCollection for n number of items...
+$boxBtn.on('click', function() {
+    //write for loop on data.imgCollection so can iterate through imgCollection for the number of items...
+    $homePage.addClass('hidden');
 
-    var imgArr = [];
-    for (var i = 0, l= data[i].imgCollection.length; i<l; i++) {
-      imgArr = data[i].imgCollection;
-      console.log(imgArr + ' imgArr!!!');
-    }
+    var $imagesPage = data.forEach(function(object, index, arr) {
+        var imgObjs = object.imgCollection;
 
-  var $imagesPage = imgArr.forEach(function(image, index, arr){
-    var $imgBox = $(photoBox);
-    $imgBox.children('a').children('img').attr('src', image.src);
-    // console.dir(object.imgCollection[0].src + ' object.imageCollection[0]');
-    divParent.append($imgBox);
-  });
+        imgObjs.forEach(function(image, caption) {
+            var $imgBox = $(photoBox);
+            $imgBox.children('a').children('img').attr('src', image.src);
+            $imgBox.children('p').text(image.caption);
+            divParent.prepend($imgBox);
+        });
 
-return $imagesPage;
+    });
+
+    return $imagesPage;
 
 });
 
 //problems...
-  //on.click needs to happen for each object in the array
-    //create this using its indexed value
+//on.click needs to happen for each object in the array
+//create this using its indexed value
 
-  //once <div> is clicked, make albums page turn into img page
+//once <div> is clicked, make albums page turn into img page
 
 
 
 //to do...
-  //insert album nav elements
+//insert album nav elements
 
-  //make titles links to do the same thing as the divs...
+//make titles links to do the same thing as the divs...
 
-  //once img is clicked on, load only that img
+//once img is clicked on, load only that img
