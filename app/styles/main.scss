@@ -1,0 +1,42 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "variables";
+
+body{
+  margin:0;
+  padding:0;
+  text-align: center;
+  font-family: sans-serif, Arial;
+  color: $primary;
+  background: $background;
+}
+
+header {
+  background: $header;
+  color: $headingText;
+}
+
+h1 {
+  margin: 0;
+}
+
+#photosContainer{
+  margin: 0 auto;
+  @include outer-container;
+  // @include omega();
+
+}
+
+.photoBox {
+  @include span-columns(4);
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 25em;
+  @include omega();
+
+}
+
+img {
+  width: 90%;
+}

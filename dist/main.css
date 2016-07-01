@@ -1,3 +1,48 @@
+html {
+  box-sizing: border-box; }
 
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: sans-serif, Arial;
+  color: #2B2D2E;
+  background: #EDEFED; }
+
+header {
+  background: #64E3B5;
+  color: #FFF; }
+
+h1 {
+  margin: 0; }
+
+#photosContainer {
+  margin: 0 auto;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto; }
+  #photosContainer::after {
+    clear: both;
+    content: "";
+    display: block; }
+
+.photoBox {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 25em;
+  margin-right: 0; }
+  .photoBox:last-child {
+    margin-right: 0; }
+
+img {
+  width: 90%; }
 
 /*# sourceMappingURL=main.css.map */
