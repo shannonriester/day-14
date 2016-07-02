@@ -31,17 +31,10 @@ h1 {
     display: block; }
 
 .photoBox {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
-  float: left;
+  float: right;
   margin: 0;
   padding: 0;
-  width: 25em;
-  margin-right: 0; }
-  .photoBox:last-child {
-    margin-right: 0; }
+  width: 25em; }
 
 img {
   width: 90%; }

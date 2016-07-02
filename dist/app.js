@@ -1,17 +1,14 @@
 var divParent = $('#photosContainer');
-var photoBox = '<div class="photoBox"><p>Title</p><a href="#"><img src="#" /></a></div>';
-
+var photoBox = '<div class="photoBox"><p><a href="#"></p></a><a href="#"><img src="#" /></a></div>';
 var navParent = $('#navParent');
-var sideNav = '<ul><li><a href="#">AlbumMenuTitle</a></li></ul>';
+var sideNav = '<li><a href="#">AlbumMenuTitle</a></li>';
 
 
-data.forEach(function(album) {
-
-
+data.forEach(function(album, i) {
     var $albumBox = $(photoBox);
+    $albumBox.children('p').children('a').attr('href', '#' + i).text(album.title);
     $albumBox.children('a').children('img').attr('src', album.cover);
     $albumBox.children('a').attr('href', album.aHREF);
-    $albumBox.children('p').text(album.title);
     divParent.append($albumBox);
 });
 
@@ -21,8 +18,6 @@ window.addEventListener('hashchange', function() {
     var dataToRender = location.hash.slice(1);
     renderAlbum(dataToRender);
 });
-
-
 
 function renderAlbum(albumObj) {
   divParent.children().remove();
@@ -39,7 +34,7 @@ function renderAlbum(albumObj) {
   data.forEach(function(albumObj){
       var $sideNav = $(sideNav);
       // $sideNav.children('li').text(albumObj.title);
-      $sideNav.children('li').children('a').text(albumObj.title).attr('href', albumObj.aHREF);
+      $sideNav.children('a').text(albumObj.title).attr('href', albumObj.aHREF);
       navParent.append($sideNav);
   });
 

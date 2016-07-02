@@ -28,12 +28,12 @@ h1 {
 }
 
 .photoBox {
-  @include span-columns(4);
-  float: left;
+  // @include span-columns(4);
+  float: right;
   margin: 0;
   padding: 0;
   width: 25em;
-  @include omega();
+  // @include omega();
 }
 
 img {
