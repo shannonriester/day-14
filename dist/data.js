@@ -1,7 +1,7 @@
 var data = [{
     title: 'Outdoors',
-    aHREF: '#0',
     cover: 'https://dl.dropboxusercontent.com/u/19411356/day14/jump.jpeg',
+    aHREF: '#0',
     imgCollection: [{
         src: 'https://dl.dropboxusercontent.com/u/19411356/day14/hotballoon.jpeg',
         caption: 'Hot Air Balloon',
@@ -13,8 +13,8 @@ var data = [{
     }]
 }, {
     title: 'Earth Rocks',
-    aHREF: '#1',
     cover: 'https://dl.dropboxusercontent.com/u/19411356/day14/desert.jpeg',
+    aHREF: '#1',
     imgCollection: [{
         src: 'https://dl.dropboxusercontent.com/u/19411356/day14/earth-crust-river.jpeg',
         caption: 'View from Above',
@@ -26,8 +26,8 @@ var data = [{
     }]
 }, {
     title: 'Cities',
-    aHREF: '#2',
     cover: 'https://dl.dropboxusercontent.com/u/19411356/day14/NYCdowntown.jpeg',
+    aHREF: '#2',
     imgCollection: [{
         src: 'https://dl.dropboxusercontent.com/u/19411356/day14/skyscraper.jpeg',
         caption: 'Skyscraper',

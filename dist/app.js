@@ -1,12 +1,13 @@
 var divParent = $('#photosContainer');
-var photoBox = '<div class="photoBox"><p>Title</p><a href="#index"><img src="#" /></a></div>';
-var $albumBox;
-var $imgBox;
-var navAlbums = '<ul><li>Outdoors</li><li>Earth Rocks</li><li>Cities</li><li>Surf n Turf</li><li>ETs</li><li>Cuties</li>';
+var photoBox = '<div class="photoBox"><p>Title</p><a href="#"><img src="#" /></a></div>';
 
+var navParent = $('#navParent');
+var sideNav = '<ul><li><a href="#">AlbumMenuTitle</a></li></ul>';
 
 
 data.forEach(function(album) {
+
+
     var $albumBox = $(photoBox);
     $albumBox.children('a').children('img').attr('src', album.cover);
     $albumBox.children('a').attr('href', album.aHREF);
@@ -15,39 +16,44 @@ data.forEach(function(album) {
 });
 
 window.addEventListener('hashchange', function() {
-    // var renderHomeData = location.hash.slice(2);
+    // if (divParent.hasClass(''))
     // renderHome(renderHomeData);
-
     var dataToRender = location.hash.slice(1);
     renderAlbum(dataToRender);
 });
 
-// function renderHome(){
-//   divParent.children().remove();
-//
-// data.forEach(function(album) {
-//
-//   var $albumBox = $(photoBox);
-//   $albumBox.children('a').children('img').attr('src', album.cover);
-//   $albumBox.children('a').attr('href', album.aHREF);
-//   $albumBox.children('p').text(album.title);
-//   divParent.append($albumBox);
-//   });
-// }
 
-function renderAlbum(albumIndex) {
+
+function renderAlbum(albumObj) {
   divParent.children().remove();
 
-  selectedObj = data[albumIndex].imgCollection;
-
-  selectedObj.forEach(function(image) {
+  var selectedObj = data[albumObj].imgCollection;
+  selectedObj.forEach(function(imageObj) {
       var $imgBox = $(photoBox);
-      $imgBox.children('a').children('img').attr('src', image.src);
-      $imgBox.children('a').attr('href', image.aHREF);
-      $imgBox.children('p').text(image.caption);
+      $imgBox.children('a').children('img').attr('src', imageObj.src);
+      $imgBox.children('a').attr('href', imageObj.aHREF);
+      $imgBox.children('p').text(imageObj.caption);
       divParent.append($imgBox);
   });
+
+  data.forEach(function(albumObj){
+      var $sideNav = $(sideNav);
+      // $sideNav.children('li').text(albumObj.title);
+      $sideNav.children('li').children('a').text(albumObj.title).attr('href', albumObj.aHREF);
+      navParent.append($sideNav);
+  });
+
 }
+
+
+//
+// function renderImage(imageIndex) {
+//
+// }
+
+
+
+
 
 //to do...
 //insert album nav elements
