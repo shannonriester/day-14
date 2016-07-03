@@ -22,6 +22,7 @@ body{
 
 h1 {
   margin: 0;
+  padding: 1em 0;
 }
 
 .homeView{
@@ -32,8 +33,15 @@ h1 {
 
 .sectionContainer {
   display: inline-flex;
+  text-align: center;
   width: 100%;
+
+  h1 {
+    margin: 0 auto;
+  }
 }
+
+
 
 .photoBox {
   @include span-columns(4);

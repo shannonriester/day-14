@@ -7,7 +7,7 @@ var headerParent = $('#header');
 var $albumH1;
 
 
-data.forEach(function(album, i) {
+data.forEach(function(album) {
     var $albumBox = $(photoBox);
     $albumBox.children('p').children('a').attr('href', '#' + i).text(album.title);
     $albumBox.children('a').children('img').attr('src', album.cover);
@@ -23,7 +23,7 @@ window.addEventListener('hashchange', function() {
     renderImage(dataToRender);
 });
 
-function renderAlbum(albumObj, picture) {
+function renderAlbum(albumObj) {
   //these reset/add whatever is needed to be styles in the css and not affect the home page
   navParent.children().remove();
   divParent.children().remove();
@@ -31,9 +31,9 @@ function renderAlbum(albumObj, picture) {
   sectionContainer.addClass('albumView');
 
     //this displays the album name in the heading for the selected album
-    var $albumH1 = $('<h1></h1>');
     headerParent.children('h1').text(data[albumObj].title);
     headerParent.append($albumH1);
+
 
   //this displays the images in the album that was selected
   var selectedObj = data[albumObj].imgCollection;
@@ -65,8 +65,7 @@ function renderAlbum(albumObj, picture) {
 //   sectionContainer.removeClass('albumView');
 //   navParent.children().remove();
 //
-//   var selectedImg = data[album].imgCollection[picture];
-//   selectedImg.forEach(function(image){
+//   var selectedImg = $(this).on('click',function(image){
 //     var $pictureBox = $(photoBox);
 //     $pictureBox.children('a').children('img').attr('src', image.src);
 //     $pictureBox.children('a').attr('href', image.aHREF);

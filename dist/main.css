@@ -19,7 +19,8 @@ body {
   text-align: center; }
 
 h1 {
-  margin: 0; }
+  margin: 0;
+  padding: 1em 0; }
 
 .homeView {
   margin: 0 auto;
@@ -33,7 +34,10 @@ h1 {
 
 .sectionContainer {
   display: inline-flex;
+  text-align: center;
   width: 100%; }
+  .sectionContainer h1 {
+    margin: 0 auto; }
 
 .photoBox {
   float: left;
