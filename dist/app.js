@@ -1,7 +1,10 @@
-var divParent = $('#photosContainer');
+var divParent = $('.photosContainer');
+var sectionContainer = $('section');
 var photoBox = '<div class="photoBox"><p><a href="#"></p></a><a href="#"><img src="#" /></a></div>';
 var navParent = $('#navParent');
 var sideNav = '<li><a href="#">AlbumMenuTitle</a></li>';
+var headerParent = $('#header');
+var $albumH1;
 
 
 data.forEach(function(album, i) {
@@ -13,27 +16,40 @@ data.forEach(function(album, i) {
 });
 
 window.addEventListener('hashchange', function() {
-    // if (divParent.hasClass(''))
-    // renderHome(renderHomeData);
+
     var dataToRender = location.hash.slice(1);
     renderAlbum(dataToRender);
+
+    renderImage(dataToRender);
 });
 
-function renderAlbum(albumObj) {
+function renderAlbum(albumObj, picture) {
+  //these reset/add whatever is needed to be styles in the css and not affect the home page
+  navParent.children().remove();
   divParent.children().remove();
+  divParent.removeClass('homeView');
+  sectionContainer.addClass('albumView');
 
+    //this displays the album name in the heading for the selected album
+    var $albumH1 = $('<h1></h1>');
+    headerParent.children('h1').text(data[albumObj].title);
+    headerParent.append($albumH1);
+
+  //this displays the images in the album that was selected
   var selectedObj = data[albumObj].imgCollection;
-  selectedObj.forEach(function(imageObj) {
+  selectedObj.forEach(function(imageObj, i) {
+    sectionContainer.addClass('sectionContainer');
       var $imgBox = $(photoBox);
       $imgBox.children('a').children('img').attr('src', imageObj.src);
       $imgBox.children('a').attr('href', imageObj.aHREF);
-      $imgBox.children('p').text(imageObj.caption);
+      $imgBox.children('p').children('a').attr('href', imageObj.aHREF).text(imageObj.caption);
       divParent.append($imgBox);
   });
 
-  data.forEach(function(albumObj){
+  //this displays the side navigation menu
+  data.forEach(function(albumObj, i){
       var $sideNav = $(sideNav);
-      // $sideNav.children('li').text(albumObj.title);
+      $sideNav.children('li').text(albumObj.title);
       $sideNav.children('a').text(albumObj.title).attr('href', albumObj.aHREF);
       navParent.append($sideNav);
   });
@@ -41,12 +57,25 @@ function renderAlbum(albumObj) {
 }
 
 
+//why isn't this image rendering function working?!??!?!
+// function renderImage(album, picture, photo) {
+//   navParent.children().remove();
+//   divParent.children().remove();
+//   divParent.removeClass('homeView');
+//   sectionContainer.removeClass('albumView');
+//   navParent.children().remove();
 //
-// function renderImage(imageIndex) {
-//
+//   var selectedImg = data[album].imgCollection[picture];
+//   selectedImg.forEach(function(image){
+//     var $pictureBox = $(photoBox);
+//     $pictureBox.children('a').children('img').attr('src', image.src);
+//     $pictureBox.children('a').attr('href', image.aHREF);
+//     $pictureBox.children('p').children('a').attr('href', image.aHREF).text(image.caption);
+//     divParent.append($pictureBox);
+//   });
 // }
-
-
+//
+//
 
 
 

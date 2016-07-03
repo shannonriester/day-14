@@ -11,42 +11,70 @@ body{
   background: $background;
 }
 
-header {
-  background: $header;
-  color: $headingText;
+#header {
+  background: $secondary;
+  color: $text;
+  // padding: 3em 0;
+  // margin-left: 10em;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 h1 {
   margin: 0;
 }
 
-#photosContainer{
+.homeView{
   margin: 0 auto;
   @include outer-container;
-  @include omega();
+  // @include omega();
+}
 
+.sectionContainer {
+  display: inline-flex;
+  width: 100%;
 }
 
 .photoBox {
-  // @include span-columns(4);
-  float: right;
-  margin: 0;
-  padding: 0;
+  @include span-columns(4);
+  // margin: 2em;
+  // padding: 1em;
   width: 25em;
-  // @include omega();
+  margin-right: 0;
 }
 
 img {
   width: 90%;
+  // margin: 1em;
+  // padding: 1em;
+
+  // &:hover {
+  //   border: solid #FF5A5F 2px;
+  // }
 }
 
-// .hidden{
-//   display: none;
-// }
+a {
+  text-decoration: none;
+  color: $primary;
+  font-weight: bold;
 
-ul {
+  &:hover {
+    color: #FF5A5F;
+  }
+}
+
+.albumView {
+  flex: 75%;
+}
+
+#navParent {
   list-style-type: none;
-  width: 50%;
-  float: left;
   margin: 0 auto;
+}
+
+li {
+  padding: .5em 0;
+  &:hover {
+    background: $secondary;
+  }
 }
