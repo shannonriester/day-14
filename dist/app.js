@@ -5,9 +5,10 @@ var navParent = $('#navParent');
 var sideNav = '<li><a href="#">AlbumMenuTitle</a></li>';
 var headerParent = $('#header');
 var $albumH1;
+var albumObjects;
 
 
-data.forEach(function(album) {
+data.forEach(function(album, i) {
     var $albumBox = $(photoBox);
     $albumBox.children('p').children('a').attr('href', '#' + i).text(album.title);
     $albumBox.children('a').children('img').attr('src', album.cover);
@@ -15,12 +16,17 @@ data.forEach(function(album) {
     divParent.append($albumBox);
 });
 
-window.addEventListener('hashchange', function() {
+window.addEventListener('hashchange', function(albums, images) {
 
     var dataToRender = location.hash.slice(1);
-    renderAlbum(dataToRender);
 
+    if (dataToRender === data[albums]){
+    renderAlbum(dataToRender);
+    console.log(albumObjects);
+  }
+    else if (dataToRender === data[images]) {
     renderImage(dataToRender);
+  }
 });
 
 function renderAlbum(albumObj) {
@@ -58,29 +64,17 @@ function renderAlbum(albumObj) {
 
 
 //why isn't this image rendering function working?!??!?!
-// function renderImage(album, picture, photo) {
-//   navParent.children().remove();
-//   divParent.children().remove();
-//   divParent.removeClass('homeView');
-//   sectionContainer.removeClass('albumView');
-//   navParent.children().remove();
-//
-//   var selectedImg = $(this).on('click',function(image){
-//     var $pictureBox = $(photoBox);
-//     $pictureBox.children('a').children('img').attr('src', image.src);
-//     $pictureBox.children('a').attr('href', image.aHREF);
-//     $pictureBox.children('p').children('a').attr('href', image.aHREF).text(image.caption);
-//     divParent.append($pictureBox);
-//   });
-// }
-//
-//
+function renderImage(imageObj) {
+  navParent.children().remove();
+  divParent.children().remove();
+  divParent.removeClass('homeView');
+  sectionContainer.removeClass('albumView');
 
-
-
-//to do...
-//insert album nav elements
-
-//make titles links to do the same thing as the divs...
-
-//once img is clicked on, load only that img
+  var selectedImg = data.imgCollection[imageObj];
+  console.log(selectedImg);
+    // var $pictureBox = $(photoBox);
+    // $pictureBox.children('a').children('img').attr('src', image.src);
+    // $pictureBox.children('a').attr('href', image.aHREF);
+    // $pictureBox.children('p').children('a').attr('href', image.aHREF).text(image.caption);
+    // divParent.append($pictureBox);
+}
