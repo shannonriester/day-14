@@ -41,7 +41,6 @@ function renderAlbum(albumObj) {
 
     //this displays the album name in the heading for the selected album
     headerParent.children('h1').text(data[albumObj].title);
-    headerParent.append($albumH1);
 
 
   //this displays the images in the album that was selected
@@ -68,16 +67,20 @@ function renderAlbum(albumObj) {
 
 //why isn't this image rendering function working?!??!?!
 function renderImage(imageObj) {
+
+  headerParent.children('h1').text(data[imageObj].caption);
   navParent.children().remove();
   divParent.children().remove();
   divParent.removeClass('homeView');
   sectionContainer.removeClass('albumView');
 
-  var selectedImg = data.imgCollection[imageObj];
-  console.log(selectedImg);
-    // var $pictureBox = $(photoBox);
-    // $pictureBox.children('a').children('img').attr('src', image.src);
-    // $pictureBox.children('a').attr('href', image.aHREF);
-    // $pictureBox.children('p').children('a').attr('href', image.aHREF).text(image.caption);
-    // divParent.append($pictureBox);
+    var selectedImg = data.imgCollection[imageObj];
+    selectedImg.forEach(function(image) {
+
+    var $pictureBox = $(photoBox);
+    $imageObj.children('a').children('img').attr('src', image.src);
+    $imageObj.children('a').attr('href', image.aHREF);
+    $imageObj.children('p').children('a').attr('href', image.aHREF).text(image.caption);
+    divParent.append($pictureBox);
+  });
 }
