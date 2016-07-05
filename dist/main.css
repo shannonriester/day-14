@@ -12,7 +12,7 @@ body {
   color: #2B2D2E;
   background: #EDEFED; }
 
-#header {
+.mainHeader {
   background: #64E3B5;
   color: #FFF;
   box-sizing: border-box;
@@ -60,14 +60,16 @@ a {
     color: #FF5A5F; }
 
 .albumView {
-  flex: 75%; }
+  flex: 75%;
+  margin: 0 0 0 10%; }
 
 #navParent {
   list-style-type: none;
-  margin: 0 auto; }
+  margin: 0 auto;
+  margin-top: 2%; }
 
 li {
-  padding: .5em 0; }
+  padding: 1.5em 0; }
   li:hover {
     background: #64E3B5; }
 

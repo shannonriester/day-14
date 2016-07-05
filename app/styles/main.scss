@@ -1,3 +1,4 @@
+
 @import "bourbon/bourbon";
 @import "neat/neat";
 @import "variables";
@@ -11,7 +12,7 @@ body{
   background: $background;
 }
 
-#header {
+.mainHeader {
   background: $secondary;
   color: $text;
   // padding: 3em 0;
@@ -73,15 +74,17 @@ a {
 
 .albumView {
   flex: 75%;
+  margin: 0 0 0 10%;
 }
 
 #navParent {
   list-style-type: none;
   margin: 0 auto;
+  margin-top: 2%;
 }
 
 li {
-  padding: .5em 0;
+  padding: 1.5em 0;
   &:hover {
     background: $secondary;
   }

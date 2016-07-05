@@ -1,5 +1,6 @@
+
 var divParent = $('.photosContainer');
-var sectionContainer = $('section');
+var sectionContainer = $('.sectionContainer');
 var photoBox = '<div class="photoBox"><p><a href="#"></p></a><a href="#"><img src="#" /></a></div>';
 var navParent = $('#navParent');
 var sideNav = '<li><a href="#">AlbumMenuTitle</a></li>';
@@ -7,8 +8,9 @@ var headerParent = $('#header');
 var $albumH1;
 var albumObjects;
 
-
 data.forEach(function(album, i) {
+    headerParent.addClass('mainHeader');
+    $('section').removeClass('sectionContainer');
     var $albumBox = $(photoBox);
     $albumBox.children('p').children('a').attr('href', '#' + i).text(album.title);
     $albumBox.children('a').children('img').attr('src', album.cover);
@@ -20,11 +22,11 @@ window.addEventListener('hashchange', function(albums, images) {
 
     var dataToRender = location.hash.slice(1);
 
-    if (dataToRender === data[albums]){
+    if (dataToRender < data.length){
     renderAlbum(dataToRender);
     console.log(albumObjects);
   }
-    else if (dataToRender === data[images]) {
+    else {
     renderImage(dataToRender);
   }
 });
@@ -33,8 +35,9 @@ function renderAlbum(albumObj) {
   //these reset/add whatever is needed to be styles in the css and not affect the home page
   navParent.children().remove();
   divParent.children().remove();
+  sectionContainer.removeClass('mainHeader');
+  sectionContainer.addClass('albumHeader');
   divParent.removeClass('homeView');
-  sectionContainer.addClass('albumView');
 
     //this displays the album name in the heading for the selected album
     headerParent.children('h1').text(data[albumObj].title);
